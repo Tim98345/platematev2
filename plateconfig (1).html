@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    <title>PlateMate Builder</title>
+    <link rel="icon" type="image/x-icon" href="platemate.ico"/>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="./css/light/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="./css/dark/plugins.css" rel="stylesheet" type="text/css" />
+	
+    <style>
+        body.dark .layout-px-spacing, .layout-px-spacing {
+            min-height: calc(100vh - 155px) !important;
+        }
+    </style>
+	
+	<style>
+    @font-face {
+      font-family: 'Vicplate';
+      src: url('https://cdn.jsdelivr.net/gh/Tim98345/fonts/Vicplate-Regular.woff2') format("woff2");
+    }
+    @font-face {
+      font-family: 'FE Mittelschrift';
+      src: url('https://cdn.jsdelivr.net/gh/Tim98345/fonts/FE-Mittelschrift.woff2') format("woff2");
+    }
+    @font-face {
+      font-family: 'Arial Narrow';
+      src: url('https://cdn.jsdelivr.net/gh/Tim98345/fonts/Arial-Narrow-Bold.woff2') format("woff2");
+    }
+    @font-face {
+      font-family: 'Arial';
+      src: url('https://cdn.jsdelivr.net/gh/Tim98345/fonts/Arial-Bold.woff2') format("woff2");
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color-scheme: only light;
+      forced-color-adjust: none;
+    }
+
+    .configurator {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      max-width: 650px;
+      margin: 40px auto;
+    }
+
+    
+    svg {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    svg.active {
+      display: block;
+    }
+	
+	.spaced {
+		padding-top:5px;
+	}
+	
+	.double-spaced {
+		padding-top:10px;
+	}
+	
+	.top-margin {
+		margin-top:60px !important;
+	}
+	
+	.plate-wrapper {
+	  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+	  padding: 20px;
+	  border-radius: 10px;
+	  background: #1e1e1e;
+	}
+	
+	body.dark .plate-wrapper {
+	  background: #1e1e1e;
+	  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+	}
+  </style>
+    
+</head>
+<body class="layout-boxed" id="pagebody">
+    <!--  BEGIN NAVBAR  -->
+    <div class="header-container container-xxl">
+        <header class="header navbar navbar-expand-sm expand-header">
+            <h1 style="text-align:center;">PlateMate Builder</h1>
+        </header>
+    </div>
+    <!--  END NAVBAR  -->
+
+    <!--  BEGIN MAIN CONTAINER  -->
+    <div class="main-container" id="container">  
+        <!--  BEGIN CONTENT AREA  -->
+        <div id="content" class="main-content top-margin">
+            <div class="layout-px-spacing">
+
+                <div class="middle-content container-xxl p-0">
+                    <!-- CONTENT AREA -->
+                    <div class="row layout-top-spacing" style="overflow-y:auto;">
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-12">
+										<h5 class="card-title">Plate Style</h5>
+										<div class="form-check form-check-primary form-check-inline">
+											<input class="form-check-input" type="radio" name="style" id="plate-style-small-std" value="small">
+											<label class="form-check-label" for="plate-style-small-std">
+												Small - Standard Plate
+											</label>
+										</div>
+
+										<div class="form-check form-check-primary form-check-inline">
+											<input class="form-check-input" type="radio" name="style" id="plate-style-small-euro" checked="" value="euro">
+											<label class="form-check-label" for="plate-style-small-euro">
+												Small - Euro Font
+											</label>
+										</div>
+
+										<div class="form-check form-check-primary form-check-inline">
+											<input class="form-check-input" type="radio" name="style" id="plate-style-lge-std" value="largeBottom">
+											<label class="form-check-label" for="plate-style-lge-std">
+												Large - Standard
+											</label>
+										</div>
+
+										<div class="form-check form-check-info form-check-inline">
+											<input class="form-check-input" type="radio" name="style" id="plate-style-lge-side-state" value="largeSide" >
+											<label class="form-check-label" for="plate-style-lge-side-state">
+												Large - Side State
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+										<div class="col-md-12 spaced">
+											<label for="mainText" class="form-label">Main Text</label>
+											<input type="text" class="form-control" id="mainText" placeholder="Custom" value="CUSTOM">
+										</div>
+										<div class="col-md-12 spaced">
+											<label for="bottomText" class="form-label">Location Text</label>
+											<input type="text" class="form-control" id="bottomText" placeholder="Victoria" value="Victoria">
+										</div>
+									</div>
+									<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12" style="padding-right:10px;">
+										<div class="col-md-12 col-sm-12 spaced">
+											<label for="textColorSelector" class="form-label">Text Color</label>
+											<select id="textColor" class="form-select">
+												<option>Blue</option>
+												<option>Black</option>
+												<option selected>White</option>
+												<option>Yellow</option>
+												<option>Gold</option>
+												<option>Silver</option>
+												<option>Red</option>
+											</select>
+										</div>
+										
+										<div class="col-md-12 col-sm-12 spaced">
+											<label for="bgColor" class="form-label">Background Color</label>
+											<select id="bgColor" class="form-select">
+												<option selected>Blue</option>
+												<option>Black</option>
+												<option>White</option>
+												<option>Yellow</option>
+												<option>Gold</option>
+												<option>Silver</option>
+												<option>Red</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="col-12 double-spaced">
+								  <div class="d-flex justify-content-md-end justify-content-start">
+									<div class="form-check">
+									  <input class="form-check-input" type="checkbox" id="holesToggle">
+									  <label class="form-check-label" for="holesToggle">
+										Add Holes?
+									  </label>
+									</div>
+								  </div>
+								</div>
+								<div class="row">
+									<div class="col-12 layout-spacing double-spaced">
+										<div class="plate-wrapper">
+													<!-- Euro Style -->
+													<svg viewBox="0 0 120 50" id="plate-euro">
+													  <rect id="euroBorder" x="1" y="1" width="118" height="48" rx="5" ry="5" stroke="#000000" stroke-width="2" fill="#000000"/>
+													  <circle class="euroHole" cx="5" cy="5" r="1.5" fill="#cccccc"/>
+													  <circle class="euroHole" cx="115" cy="5" r="1.5" fill="#cccccc"/>
+													  <circle class="euroHole" cx="5" cy="45" r="1.5" fill="#cccccc"/>
+													  <circle class="euroHole" cx="115" cy="45" r="1.5" fill="#cccccc"/>
+													  <text id="euroTop" x="60" y="11" font-size="8" text-anchor="middle" fill="#FFFFFF" font-family="Arial Narrow">VIC</text>
+													  <text id="euroMain" x="61.5" y="40" text-anchor="middle" fill="#FFFFFF" font-family="FE Mittelschrift" font-size="33">DEFAULT</text>
+													</svg>
+
+													<!-- Small Plate -->
+													<svg viewBox="0 0 120 50" id="plate-small">
+													  <rect id="smallBorder" x="1" y="1" width="118" height="48" rx="5" ry="5" stroke="#000000" stroke-width="2" fill="#0000FF"/>
+													  <circle class="smallHole" cx="5" cy="5" r="1.5" fill="#cccccc"/>
+													  <circle class="smallHole" cx="115" cy="5" r="1.5" fill="#cccccc"/>
+													  <circle class="smallHole" cx="5" cy="45" r="1.5" fill="#cccccc"/>
+													  <circle class="smallHole" cx="115" cy="45" r="1.5" fill="#cccccc"/>
+													  <text id="smallMain" x="61.5" y="31" font-size="28" text-anchor="middle" fill="#FFFFFF" font-family="Vicplate">CUSTOM</text>
+													  <text id="smallBottom" x="60" y="45" font-size="10" text-anchor="middle" fill="#FFFFFF" font-family="Arial"></text>
+													</svg>
+
+													<!-- Large Side -->
+													<svg viewBox="0 0 180 65" id="plate-largeSide">
+													  <rect id="largeSideBorder" x="1" y="1" width="178" height="63" rx="5" ry="5" stroke="#000000" stroke-width="2" fill="#000000"/>
+													  <circle class="largeSideHole" cx="5" cy="5" r="1.5" fill="#cccccc"/>
+													  <circle class="largeSideHole" cx="175" cy="5" r="1.5" fill="#cccccc"/>
+													  <circle class="largeSideHole" cx="5" cy="60" r="1.5" fill="#cccccc"/>
+													  <circle class="largeSideHole" cx="175" cy="60" r="1.5" fill="#cccccc"/>
+													  <text id="largeSideV" x="8" y="22" font-size="18" fill="#FFFFFF" font-family="Vicplate">V</text>
+													  <text id="largeSideI" x="8" y="40" font-size="18" fill="#FFFFFF" font-family="Vicplate">I</text>
+													  <text id="largeSideC" x="8" y="57" font-size="18" fill="#FFFFFF" font-family="Vicplate">C</text>
+													  <text id="largeSideMain" font-size="56" text-anchor="middle" fill="#FFFFFF" font-family="Vicplate"></text>
+													</svg>
+
+													<!-- Large Bottom -->
+													<svg viewBox="0 0 180 65" id="plate-largeBottom">
+													  <rect id="largeBottomBorder" x="1" y="1" width="178" height="63" rx="5" ry="5" stroke="#000000" stroke-width="2" fill="#0000FF"/>
+													  <circle class="largeBottomHole" cx="5" cy="5" r="1.5" fill="#cccccc"/>
+													  <circle class="largeBottomHole" cx="175" cy="5" r="1.5" fill="#cccccc"/>
+													  <circle class="largeBottomHole" cx="5" cy="60" r="1.5" fill="#cccccc"/>
+													  <circle class="largeBottomHole" cx="175" cy="60" r="1.5" fill="#cccccc"/>
+													  <text id="largeBottomMain" font-size="42" text-anchor="middle" fill="#FFFFFF" font-family="Vicplate"></text>
+													  <text id="largeBottomBottom" x="90" y="58" font-size="11" text-anchor="middle" fill="#FFFFFF" font-family="Arial">VICTORIA</text>
+													</svg>
+												</div>
+												
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-8 col-sm-12 spaced">
+										<div class="col-md-12 spaced" readonly>
+											<label for="mainText" class="form-label">Link to design</label>
+											<input type="text" class="form-control" id="output-text" placeholder="" value="">
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-12 spaced">
+										<div class="col-md-12 spaced" readonly>
+											<label for="mainText" class="form-label">Copy link</label>
+											<input type="button" class="form-control" id="btnCopyLink" placeholder="" value="Copy">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						
+						
+								
+						<div class="col-12 spaced">
+							<p style="text-align:center">Small Plate Dimensions - 50mm x 120mm</p>
+							<p style="text-align:center">Large Plate Dimensions - 65mm x 180mm</p>
+						</div>
+						
+						<div class="col-md-12" style="text-align:center">
+							<p>Plates can be adjusted to suit more letters or special character (e.g. ! or Hearts) upon request
+Final artwork will be shared for approval</p>
+						</div>
+                       
+
+                        <div class="col-md-12">
+							
+                        </div>
+                        
+                    </div>
+                    <!-- CONTENT AREA -->
+
+                </div>
+				<div class="footer-section f-section-1 double-spaced" style="padding-left:5px; ">
+                    
+                </div>
+            </div>
+
+            <div class="footer-wrapper">
+                
+            </div>
+            
+        </div>
+        <!--  END CONTENT AREA  -->
+    </div>
+    <!-- END MAIN CONTAINER -->
+
+    <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./plugins/src/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <!-- END GLOBAL MANDATORY SCRIPTS -->
+
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+	<script>
+    const styles = document.getElementsByName("style");
+    const textColor = document.getElementById("textColor");
+    const bgColor = document.getElementById("bgColor");
+    const holesToggle = document.getElementById("holesToggle");
+    const mainText = document.getElementById("mainText");
+    const bottomText = document.getElementById("bottomText");
+
+	function buildOutputText() {
+	  const style = document.querySelector('input[name="style"]:checked')?.value || '';
+	  const mainText = document.getElementById("mainText").value || '';
+	  const bottomText = document.getElementById("bottomText").value || '';
+	  const textColor = document.getElementById("textColor").value || '';
+	  const bgColor = document.getElementById("bgColor").value || '';
+	  const holesToggle = document.getElementById("holesToggle").checked ? "1" : "0";
+
+	  const params = new URLSearchParams({
+		style,
+		mainText,
+		bottomText,
+		textColor,
+		bgColor,
+		holes: holesToggle
+	  });
+
+	  return `${location.origin}${location.pathname}?${params.toString()}`;
+	}
+	
+	document.getElementById("btnCopyLink").addEventListener("click", () => {
+	  const output = document.getElementById("output-text");
+	  output.select();
+	  output.setSelectionRange(0, 99999);
+	  document.execCommand("copy");
+	  alert("Link copied to clipboard!");
+	});
+	
+	function loadFromQueryParams() {
+	  const params = new URLSearchParams(window.location.search);
+
+	  const style = params.get("style");
+	  if (style) {
+		const radio = document.querySelector(`input[name="style"][value="${style}"]`);
+		if (radio) radio.checked = true;
+	  }
+
+	  const mainText = params.get("mainText");
+	  if (mainText !== null) {
+		document.getElementById("mainText").value = mainText;
+	  }
+
+	  const bottomText = params.get("bottomText");
+	  if (bottomText !== null) {
+		document.getElementById("bottomText").value = bottomText;
+	  }
+
+	  const textColor = params.get("textColor");
+	  if (textColor) {
+		const select = document.getElementById("textColor");
+		if ([...select.options].some(o => o.value === textColor)) {
+		  select.value = textColor;
+		}
+	  }
+
+	  const bgColor = params.get("bgColor");
+	  if (bgColor) {
+		const select = document.getElementById("bgColor");
+		if ([...select.options].some(o => o.value === bgColor)) {
+		  select.value = bgColor;
+		}
+	  }
+
+	  const holes = params.get("holes");
+	  document.getElementById("holesToggle").checked = holes === "1";
+	}
+
+
+
+    function update() {
+      const val = mainText.value.toUpperCase();
+      const bottomVal = bottomText.value.toUpperCase();
+      const color = textColor.value;
+      const bg = bgColor.value;
+      const showHoles = holesToggle.checked;
+	  
+	  document.getElementById("output-text").value = buildOutputText();
+
+      document.getElementById("euroMain").textContent = val;
+      document.getElementById("euroTop").textContent = bottomVal || "VIC";
+      document.getElementById("euroMain").setAttribute("fill", color);
+      document.getElementById("euroTop").setAttribute("fill", color);
+      document.getElementById("euroBorder").setAttribute("fill", bg);
+      document.getElementById("euroBorder").setAttribute("stroke", color);
+      document.querySelectorAll('.euroHole').forEach(e=>e.style.display = showHoles ? "block":"none");
+
+      document.getElementById("smallMain").textContent = val;
+      document.getElementById("smallMain").setAttribute("fill", color);
+      document.getElementById("smallBorder").setAttribute("fill", bg);
+      document.getElementById("smallBorder").setAttribute("stroke", color);
+      document.querySelectorAll('.smallHole').forEach(e=>e.style.display = showHoles ? "block":"none");
+
+      const smallBottom = document.getElementById("smallBottom");
+      smallBottom.innerHTML = "";
+      for (let char of bottomVal) {
+        const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+        tspan.setAttribute("dx", "1");
+        tspan.setAttribute("fill", color);
+        tspan.textContent = char;
+        smallBottom.appendChild(tspan);
+      }
+
+      const largeSideMain = document.getElementById("largeSideMain");
+      largeSideMain.innerHTML = "";
+      const startX = 95 - ((val.length - 1) * 23 / 2);
+      for (let i = 0; i < val.length; i++) {
+        const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+        tspan.setAttribute("x", startX + i * 23);
+        tspan.setAttribute("y", "54");
+        tspan.textContent = val[i];
+        largeSideMain.appendChild(tspan);
+      }
+      document.getElementById("largeSideMain").setAttribute("fill", color);
+      document.getElementById("largeSideV").setAttribute("fill", color);
+      document.getElementById("largeSideI").setAttribute("fill", color);
+      document.getElementById("largeSideC").setAttribute("fill", color);
+      document.getElementById("largeSideBorder").setAttribute("fill", bg);
+      document.getElementById("largeSideBorder").setAttribute("stroke", color);
+      document.querySelectorAll('.largeSideHole').forEach(e=>e.style.display = showHoles ? "block":"none");
+
+      const sideLetters = bottomVal.padEnd(3, " ").substring(0,3).toUpperCase();
+      document.getElementById("largeSideV").textContent = sideLetters.charAt(0);
+      document.getElementById("largeSideI").textContent = sideLetters.charAt(1);
+      document.getElementById("largeSideC").textContent = sideLetters.charAt(2);
+
+      const largeBottomMain = document.getElementById("largeBottomMain");
+      largeBottomMain.innerHTML = "";
+      const startBX = 90 - ((val.length - 1) * 17 / 2);
+      for (let i = 0; i < val.length; i++) {
+        const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+        tspan.setAttribute("x", startBX + i * 17);
+        tspan.setAttribute("y", "42");
+        tspan.textContent = val[i];
+        largeBottomMain.appendChild(tspan);
+      }
+      document.getElementById("largeBottomMain").setAttribute("fill", color);
+      document.getElementById("largeBottomBottom").textContent = bottomVal;
+      document.getElementById("largeBottomBottom").setAttribute("fill", color);
+      document.getElementById("largeBottomBorder").setAttribute("fill", bg);
+      document.getElementById("largeBottomBorder").setAttribute("stroke", color);
+      document.querySelectorAll('.largeBottomHole').forEach(e=>e.style.display = showHoles ? "block":"none");
+    }
+
+    function switchStyle() {
+      const selected = document.querySelector('input[name="style"]:checked').value;
+      ['euro','small','largeSide','largeBottom'].forEach(id => {
+        document.getElementById("plate-" + id).classList.remove("active");
+      });
+      document.getElementById("plate-"+selected).classList.add("active");
+      update();
+    }
+
+    styles.forEach(r => r.addEventListener("change", switchStyle));
+    [mainText, bottomText, textColor, bgColor, holesToggle].forEach(input => input.addEventListener("input", update));
+	loadFromQueryParams();
+    switchStyle();
+	
+	
+	const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+	const body = document.getElementById("pagebody");
+
+	if (prefersDark && body) {
+	  body.classList.add("dark");
+
+	  const toggle = document.getElementById("darkModeToggle");
+	  if (toggle) {
+		toggle.checked = true;
+	  }
+	}
+  </script>
+</body>
+</html>
